@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_flutter/widgets/tasks_list.dart';
 
 bool checkBoxIsChecked = false;
 
@@ -57,6 +58,7 @@ class _TasksScreenState extends State<TasksScreen> {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -64,37 +66,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   topLeft: Radius.circular(20),
                 ),
               ),
-              child: ListView(
-                children: <Widget>[
-                  CheckboxListTile(
-                    title: Text('Buy milk'),
-                    value: checkBoxIsChecked,
-                    onChanged: (bool value) {
-                      setState(() {
-                        checkBoxIsChecked = !checkBoxIsChecked;
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Buy eggs'),
-                    value: checkBoxIsChecked,
-                    onChanged: (bool value) {
-                      setState(() {
-                        checkBoxIsChecked = !checkBoxIsChecked;
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Buy bread'),
-                    value: checkBoxIsChecked,
-                    onChanged: (bool value) {
-                      setState(() {
-                        checkBoxIsChecked = !checkBoxIsChecked;
-                      });
-                    },
-                  ),
-                ],
-              ),
+              child: TasksList(),
             ),
           ),
         ],
