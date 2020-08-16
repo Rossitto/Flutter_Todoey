@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_flutter/models/task.dart';
+import 'package:todoey_flutter/widgets/tasks_list.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  final Function addTaskCallback;
+  AddTaskScreen(this.addTaskCallback);
+
+  TextEditingController textController;
+
   @override
   Widget build(BuildContext context) {
+    String newTaskTitle;
+
     return Container(
       color: Color.fromARGB(255, 117, 117, 117),
       child: Container(
@@ -32,6 +41,8 @@ class AddTaskScreen extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: textController,
+                onChanged: (newText) => newTaskTitle = newText,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
@@ -54,7 +65,6 @@ class AddTaskScreen extends StatelessWidget {
                   vertical: 10,
                 ),
                 child: FlatButton(
-                  onPressed: null,
                   child: Text(
                     'Add',
                     style: TextStyle(
@@ -63,6 +73,11 @@ class AddTaskScreen extends StatelessWidget {
                     ),
                   ),
                   disabledColor: Colors.lightBlueAccent,
+                  color: Colors.lightBlueAccent[400],
+                  onPressed: () {
+                    addTaskCallback(newTaskTitle);
+                    // textController.clear();
+                  },
                 ),
               ),
             ],

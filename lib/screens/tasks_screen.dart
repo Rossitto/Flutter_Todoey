@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey_flutter/main.dart';
 import 'package:todoey_flutter/screens/add_task_screen.dart';
 import 'package:todoey_flutter/widgets/tasks_list.dart';
+import 'package:todoey_flutter/models/task.dart';
+import 'package:provider/provider.dart';
 
 bool checkBoxIsChecked = false;
 
@@ -21,9 +25,17 @@ class _TasksScreenState extends State<TasksScreen> {
             isScrollControlled: true,
             builder: (context) => SingleChildScrollView(
               child: Container(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: AddTaskScreen()),
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: AddTaskScreen(
+                  (newTaskTitle) {
+                    setState(() {
+                      Provider.of<Tasks>(context).addTask(newTaskTitle);
+                    });
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
             ),
           );
         },
@@ -78,7 +90,9 @@ class _TasksScreenState extends State<TasksScreen> {
                   topLeft: Radius.circular(20),
                 ),
               ),
-              child: TasksList(),
+              child: // TODO: make this child works! 
+              // child: Provider.of<Tasks>(context).tasks,
+              // child: TasksList(tasks: tasks),
             ),
           ),
         ],
