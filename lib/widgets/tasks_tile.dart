@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TasksTile extends StatelessWidget {
+class TaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
