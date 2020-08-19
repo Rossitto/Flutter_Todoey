@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todoey_flutter/main.dart';
+import 'package:todoey_flutter/models/task_data.dart';
 import 'package:todoey_flutter/screens/add_task_screen.dart';
-import 'package:todoey_flutter/widgets/tasks_list.dart';
-import 'package:todoey_flutter/models/task.dart';
-import 'package:provider/provider.dart';
 
 bool checkBoxIsChecked = false;
 
-class TasksScreen extends StatefulWidget {
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +21,9 @@ class _TasksScreenState extends State<TasksScreen> {
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTaskScreen(
                   (newTaskTitle) {
-                    setState(() {
-                      Provider.of<Tasks>(context).addTask(newTaskTitle);
-                    });
+                    // setState(() {
+                    // Provider.of(TaskData(context).addTask(newTaskTitle));
+                    // });
                     Navigator.pop(context);
                   },
                 ),
@@ -71,7 +63,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '12 tasks',
+                  '${Provider.of<TaskData>(context).taskCount} tasks',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -90,7 +82,8 @@ class _TasksScreenState extends State<TasksScreen> {
                   topLeft: Radius.circular(20),
                 ),
               ),
-              child: // TODO: make this child works! 
+              // ignore: todo
+              child: null, // TODO: make this child work!
               // child: Provider.of<Tasks>(context).tasks,
               // child: TasksList(tasks: tasks),
             ),

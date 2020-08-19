@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:todoey_flutter/models/task.dart';
-import 'package:todoey_flutter/widgets/tasks_list.dart';
 
 class AddTaskScreen extends StatelessWidget {
   final Function addTaskCallback;
   AddTaskScreen(this.addTaskCallback);
 
-  TextEditingController textController;
+  // TextEditingController textController;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +39,7 @@ class AddTaskScreen extends StatelessWidget {
                 ),
               ),
               TextField(
-                controller: textController,
+                // controller: textController,
                 onChanged: (newText) => newTaskTitle = newText,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
