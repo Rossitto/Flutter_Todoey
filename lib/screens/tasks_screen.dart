@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/models/task_data.dart';
 import 'package:todoey_flutter/screens/add_task_screen.dart';
+import 'package:todoey_flutter/widgets/tasks_list.dart';
 
 bool checkBoxIsChecked = false;
 
@@ -82,10 +83,7 @@ class TasksScreen extends StatelessWidget {
                   topLeft: Radius.circular(20),
                 ),
               ),
-              // ignore: todo
-              child: null, // TODO: make this child work!
-              // child: Provider.of<Tasks>(context).tasks,
-              // child: TasksList(tasks: tasks),
+              child: TasksList(),
             ),
           ),
         ],
