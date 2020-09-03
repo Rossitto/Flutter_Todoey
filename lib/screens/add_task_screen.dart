@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey_flutter/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  final Function addTaskCallback;
-  AddTaskScreen(this.addTaskCallback);
-
-  // TextEditingController textController;
+  // final Function addTaskCallback;
+  // AddTaskScreen(this.addTaskCallback);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,6 @@ class AddTaskScreen extends StatelessWidget {
                 ),
               ),
               TextField(
-                // controller: textController,
                 onChanged: (newText) => newTaskTitle = newText,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
@@ -73,8 +72,10 @@ class AddTaskScreen extends StatelessWidget {
                   disabledColor: Colors.lightBlueAccent,
                   color: Colors.lightBlueAccent[400],
                   onPressed: () {
-                    addTaskCallback(newTaskTitle);
-                    // textController.clear();
+                    // YOU HAVE TO USE "listen: false", OTHERWISE IT WILL NOT WORK!!
+                    Provider.of<TaskData>(context, listen: false)
+                        .addTask(newTaskTitle);
+                    Navigator.pop(context);
                   },
                 ),
               ),

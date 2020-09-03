@@ -6,7 +6,12 @@ import 'package:todoey_flutter/widgets/tasks_list.dart';
 
 bool checkBoxIsChecked = false;
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
+  @override
+  _TasksScreenState createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +26,13 @@ class TasksScreen extends StatelessWidget {
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTaskScreen(
-                  (newTaskTitle) {
+
                     // setState(() {
                     // Provider.of(TaskData(context).addTask(newTaskTitle));
                     // });
-                    Navigator.pop(context);
-                  },
-                ),
+                    // Navigator.pop(context);
+
+                    ),
               ),
             ),
           );
